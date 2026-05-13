@@ -46,14 +46,24 @@ const brandSwatches: SwatchProps[] = [
     usage: "Core brand color, CTAs, active states",
   },
   {
+    name: "Primary Hover",
+    value: "#4032C8",
+    usage: "Primary hover states and active emphasis",
+  },
+  {
     name: "Royal Indigo",
     value: "#6366F1",
     usage: "Interactive gradients, chart fills, luminous accents",
   },
   {
+    name: "Bright Indigo",
+    value: "#5F57FF",
+    usage: "Interactive highlights, hover gradients, active transitions",
+  },
+  {
     name: "Deep Violet",
     value: "#221A35",
-    usage: "Premium dark surfaces, depth backgrounds",
+    usage: "Premium dark surfaces and depth backgrounds",
   },
   {
     name: "Surface Plum",
@@ -61,9 +71,29 @@ const brandSwatches: SwatchProps[] = [
     usage: "Dark mode elevated surfaces and layered gradients",
   },
   {
+    name: "Atmospheric Purple",
+    value: "#140B29",
+    usage: "Dark mode text on luminous gradients",
+  },
+  {
+    name: "Night Surface",
+    value: "#15112B",
+    usage: "Dark cards, panels, elevated containers",
+  },
+  {
+    name: "Hover Surface",
+    value: "#221D40",
+    usage: "Dark hover states and active surfaces",
+  },
+  {
     name: "Soft Lavender",
     value: "#EBD3F8",
     usage: "Dark mode text highlights and premium emphasis",
+  },
+  {
+    name: "Muted Lavender",
+    value: "#C4B5FD",
+    usage: "Dark mode navigation, links, subtle emphasis",
   },
   {
     name: "Lavender Glow",
@@ -79,6 +109,106 @@ const brandSwatches: SwatchProps[] = [
     name: "Electric Violet",
     value: "#A855F7",
     usage: "Gradient endings, energetic accents, chart highlights",
+  },
+  {
+    name: "Bright Violet",
+    value: "#8B5CF6",
+    usage: "Gradient energy points and hover transitions",
+  },
+  {
+    name: "Soft Indigo",
+    value: "#9EA8FF",
+    usage: "Gradient mid-tones, chart transitions, soft emphasis",
+  },
+  {
+    name: "Muted Indigo",
+    value: "#818CF8",
+    usage: "Hover borders, secondary actions, interactive accents",
+  },
+  {
+    name: "Glass Lavender",
+    value: "#F3E8FF",
+    usage: "Soft overlays, elevated highlights, premium backgrounds",
+  },
+  {
+    name: "Canvas Light",
+    value: "#F7F7F4",
+    usage: "Primary light mode canvas and backgrounds",
+  },
+  {
+    name: "Border Neutral",
+    value: "#E6E1DC",
+    usage: "Borders, dividers, subtle separators",
+  },
+  {
+    name: "Text Primary",
+    value: "#1F1B1A",
+    usage: "Primary typography and headings in light mode",
+  },
+  {
+    name: "Text Secondary",
+    value: "#7B716B",
+    usage: "Muted text, descriptions, helper content",
+  },
+  {
+    name: "Frost White",
+    value: "#FFFFFF",
+    usage: "Cards, surfaces, elevated light containers",
+  },
+  {
+    name: "Soft Surface",
+    value: "#F8F7FF",
+    usage: "Light hover states and secondary button backgrounds",
+  },
+  {
+    name: "Glow Indigo",
+    value: "#6366F12E",
+    usage: "Soft indigo shadow glow converted from rgba(99,102,241,0.18)",
+  },
+  {
+    name: "Strong Glow Indigo",
+    value: "#6366F161",
+    usage: "Strong indigo hover glow converted from rgba(99,102,241,0.38)",
+  },
+  {
+    name: "Glow Orchid",
+    value: "#C084FC73",
+    usage: "Orchid hover glow converted from rgba(192,132,252,0.45)",
+  },
+  {
+    name: "Glass White",
+    value: "#FFFFFF14",
+    usage: "Subtle dark mode borders converted from rgba(255,255,255,0.08)",
+  },
+  {
+    name: "Deep Indigo",
+    value: "#4338CA",
+    usage: "Primary gradient transitions, premium dark interactions",
+  },
+  {
+    name: "Muted Indigo Overlay",
+    value: "#818CF880",
+    usage: "Dark hover borders and elevated interactive outlines",
+  },
+  {
+    name: "Indigo Soft Overlay",
+    value: "#6366F14D",
+    usage: "Soft borders, button outlines, atmospheric accents",
+  },
+  {
+    name: "Analytics Cyan",
+    value: "#06B6D4",
+    usage: "Data visualization, chart highlights, analytics accents",
+  },
+  {
+    name: "Brand Teal",
+    value: "#005060",
+    usage: "Enterprise analytics depth, dark dashboard accents",
+  },
+  {
+    name: "Luminous Cyan",
+    value: "#2DE2E6",
+    usage: "Glow accents, premium dark mode CTAs, neon emphasis",
   },
 ];
 const semanticSwatches: SwatchProps[] = [
@@ -890,7 +1020,7 @@ export default function StyleGuidePage() {
                 <SurfaceCard name="App Background" value="#F0F6FC" usage="Main light canvas" />
                 <SurfaceCard name="Card Surface" value="#FEFFFE" usage="Cards, panels, modals" />
                 <SurfaceCard name="Soft Surface" value="#F8FBFF" usage="Tables and subtle containers" />
-                <SurfaceCard name="Border" value="#E5E7EB" usage="Hairline separators" />
+                <SurfaceCard name="Border" value="#E6E1DC" usage="Hairline separators" />
               </div>
             </div>
 
@@ -905,7 +1035,7 @@ export default function StyleGuidePage() {
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <SurfaceCard dark name="App Background" value="#0E091E" usage="Main dark canvas" />
                 <SurfaceCard dark name="Card Surface" value="#15112B" usage="Panels and cards" />
-                <SurfaceCard dark name="Elevated Surface" value="#1A1633" usage="Menus and popovers" />
+                <SurfaceCard dark name="Elevated Surface" value="#1E1A33" usage="Menus and popovers" />
                 <SurfaceCard dark name="Hover Surface" value="#221D40" usage="Hover and active overlays" />
               </div>
             </div>
@@ -1006,32 +1136,57 @@ export default function StyleGuidePage() {
         </section>
         <section id="elevation" className="py-16 md:py-20">
           <SectionTitle
-            eyebrow=" ELEVATION"
+            eyebrow="ELEVATION"
             title="Elevation Scale"
             description="Use very subtle elevation. Surfaces stay flat and border-led, with only light shadow used for floating layers."
           />
 
-          <div className="mt-8 rounded-[10px] border border-slate-200 bg-white p-5 md:p-6">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {elevationScale.map((item) => (
-                <div
-                  key={item.token}
-                  className="rounded-[10px] border border-slate-200 bg-[#F9FAFB] p-4"
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {elevationScale.map((item) => (
+              <div
+                key={item.token}
+                className="
+          group relative overflow-hidden rounded-[20px] border border-[#E6E1DC]
+          bg-white p-5 text-left transition-all duration-500
+          hover:-translate-y-1 hover:border-[#6366F1]/30 hover:shadow-[0_12px_40px_rgba(99,102,241,0.10)]
+        "
+              >
+                <span
+                  className="
+            pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500
+            group-hover:opacity-100
+          "
                 >
-                  <div
-                    className={`rounded-[8px] bg-white p-4 transition-all duration-200 ${item.shadow} ${item.border}`}
-                  >
-                    <div className="h-20 rounded-[8px] border border-slate-100 bg-white" />
+                  <span
+                    className="
+              absolute inset-0
+              bg-[radial-gradient(circle_at_top_left,rgba(139,92,246,0.16),transparent_45%)]
+            "
+                  />
+                </span>
+
+                <div className="relative z-10 flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-[18px] font-medium tracking-[-0.02em] text-slate-950">
+                      {item.title}
+                    </div>
+                    <div className="mt-1 text-[14px] text-[#7B716B]">{item.usage}</div>
                   </div>
 
-                  <div className="mt-4 text-[13px] font-medium tracking-[-0.02em] text-slate-950">
-                    {item.title}
+                  <div className="rounded-full border border-slate-200 bg-[#F9FAFB] px-3 py-1 text-[11px] font-medium text-slate-500">
+                    {item.token}
                   </div>
-                  <div className="mt-1 text-[11px] text-slate-500">{item.token}</div>
-                  <p className="mt-2 text-[12px] leading-5 text-slate-500">{item.usage}</p>
                 </div>
-              ))}
-            </div>
+
+                <div className="relative z-10 mt-5 rounded-[14px] border border-black/5 bg-[#F9FAFB] p-4">
+                  <div
+                    className={`rounded-[12px] border p-4 transition-all duration-300 ${item.shadow} ${item.border}`}
+                  >
+                    <div className="h-20 rounded-[10px] border border-slate-100 bg-white" />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </div>
