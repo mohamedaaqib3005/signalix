@@ -628,9 +628,9 @@ function ButtonPreview({
 
         rounded-full
         border
-        border-emerald-200
+        border-[#34d399]
 
-        bg-emerald-50
+        bg-[#dcfeed]
 
         px-3
         py-1
@@ -639,7 +639,7 @@ function ButtonPreview({
         font-medium
         tracking-[-0.01em]
 
-        text-emerald-700
+        text-[#29ac7c]
       `}
       >
         {label}
@@ -655,9 +655,9 @@ function ButtonPreview({
 
         rounded-full
         border
-        border-[#FB923C]
+        border-[#fb923c]
 
-        bg-white
+        bg-[#fef1ec]
 
         px-3
         py-1
@@ -666,15 +666,14 @@ function ButtonPreview({
         font-medium
         tracking-[-0.01em]
 
-        text-[#C2410C]
-
-        shadow-[0_4px_14px_rgba(251,146,60,0.12)]
+        text-[#d37722]
       `}
       >
         {label}
       </span>
     );
   }
+
 
   // BLUE BADGE
   if (kind === "blueBadge") {
@@ -690,7 +689,7 @@ function ButtonPreview({
         rounded-full
 
         border
-        border-[#2563ED]/35
+        border-[#2563ED]
 
         bg-[linear-gradient(135deg,#EFF6FF_0%,#DBEAFE_42%,#BFDBFE_100%)]
 
@@ -701,7 +700,7 @@ function ButtonPreview({
         font-medium
         tracking-[-0.01em]
 
-        text-[#2563ED]
+        text-[#1D4ED8]
 
         shadow-[0_8px_24px_rgba(37,99,235,0.22)]
 
@@ -746,7 +745,7 @@ function ButtonPreview({
         border
         border-[#22D3EE]/35
 
-        bg-[linear-gradient(135deg,#67E8F9_0%,#37E2FE_38%,#22D3EE_100%)]
+        bg-[linear-gradient(135deg,#9eecfe_0%,#37e2fe_38%,#22d3ee_100%)]
 
         px-3
         py-1
@@ -792,9 +791,9 @@ function ButtonPreview({
 
         rounded-full
         border
-        border-slate-200
+        border-[#8fa0af]
 
-        bg-[#F9FAFB]
+        bg-[#fcfcfd]
 
         px-3
         py-1
@@ -803,7 +802,7 @@ function ButtonPreview({
         font-medium
         tracking-[-0.01em]
 
-        text-slate-700
+        text-[#5e6a74]
       `}
       >
         {label}
@@ -856,7 +855,7 @@ function ButtonPreview({
 
   return (
     <span
-      className={`${base} rounded-full border border-red-200 bg-red-50 px-3 py-1 text-[11px] text-red-700`}
+      className={`${base} rounded-full border border-[#f87171] bg-[#FeF1F1] px-3 py-1 text-[11px] text-[#f62525]`}
     >
       {label}
     </span>
@@ -965,11 +964,12 @@ const pills: ButtonSpec[] = [
     description: "Positive and successful states.",
     kind: "successBadge",
   },
+
   {
-    token: "Neutral Pill",
-    label: "Pending",
-    description: "Informational or inactive states.",
-    kind: "neutralBadge",
+    token: "Destructive Pill",
+    label: "Failed",
+    description: "Errors and destructive states.",
+    kind: "destructiveBadge",
   },
   {
     token: "Warning Pill",
@@ -978,29 +978,31 @@ const pills: ButtonSpec[] = [
     kind: "warningBadge",
   },
   {
+    token: "Neutral Pill",
+    label: "Pending",
+    description: "Informational or inactive states.",
+    kind: "neutralBadge",
+  },
+
+  {
     token: "AI Pill",
     label: "AI agent",
     description: "AI-powered assistant state.",
     kind: "aiBadge",
   },
   {
-    token: "Blue Pill",
+    token: "Data Pill",
     label: "Analytics",
     description: "Deep blue highlighted state for insights and dashboards.",
     kind: "blueBadge",
   },
   {
-    token: "Cyan Pill",
+    token: "Luminous Pill",
     label: "Live Data",
     description: "Bright cyan state for realtime and active systems.",
     kind: "cyanBadge",
   },
-  {
-    token: "Destructive Pill",
-    label: "Failed",
-    description: "Errors and destructive states.",
-    kind: "destructiveBadge",
-  },
+
 ];
 function Swatch({ name, value, usage }: SwatchProps) {
   return (
@@ -1177,10 +1179,28 @@ const fontWeightGroups = [
     family: "Aeonik Pro",
     fontClass: "font-cabinet",
     weights: [
+      { name: "Air", weight: 100, style: "normal" },
+      // { name: "Air Italic", weight: 100, style: "italic" },
+
+      { name: "Thin", weight: 200, style: "normal" },
+      // { name: "Thin Italic", weight: 200, style: "italic" },
+
+      { name: "Light", weight: 300, style: "normal" },
+      // { name: "Light Italic", weight: 300, style: "italic" },
+
       { name: "Regular", weight: 400, style: "normal" },
+
+      { name: "Medium", weight: 500, style: "normal" },
+      // { name: "Medium Italic", weight: 500, style: "italic" },
+
       { name: "Bold", weight: 700, style: "normal" },
+      // { name: "Bold Italic", weight: 700, style: "italic" },
+
+      { name: "Black", weight: 900, style: "normal" },
+      // { name: "Black Italic", weight: 900, style: "italic" },
     ],
   },
+
   {
     family: "Satoshi",
     fontClass: "font-satoshi",
@@ -1192,11 +1212,6 @@ const fontWeightGroups = [
       { name: "Semi Bold", weight: 600, style: "normal" },
       { name: "Bold", weight: 700, style: "normal" },
       { name: "Black", weight: 900, style: "normal" },
-      { name: "Light Italic", weight: 300, style: "italic" },
-      { name: "Italic", weight: 400, style: "italic" },
-      { name: "Medium Italic", weight: 500, style: "italic" },
-      { name: "Bold Italic", weight: 700, style: "italic" },
-      { name: "Black Italic", weight: 900, style: "italic" },
     ],
   },
   {
@@ -1229,6 +1244,12 @@ function FontWeightRow({
     style?: string;
   }[];
 }) {
+  const sortedWeights = [...weights].sort((a, b) => {
+    if (a.weight !== b.weight) return a.weight - b.weight;
+    if ((a.style || "normal") === (b.style || "normal")) return 0;
+    return (a.style || "normal") === "normal" ? -1 : 1;
+  });
+
   return (
     <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white">
       <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5 md:px-8">
@@ -1242,50 +1263,32 @@ function FontWeightRow({
         </div>
 
         <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-slate-400">
-          Variant / Typeface
+          Weight / Sample
         </div>
       </div>
 
-      <div className="grid md:grid-cols-[220px_1fr]">
-        <div className="border-b border-slate-200 bg-[#F9FAFB] px-6 py-5 md:border-b-0 md:border-r md:px-8">
-          <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400">
-            Variant
-          </div>
+      <div className="divide-y divide-slate-200">
+        {sortedWeights.map((item) => (
+          <div
+            key={`${family}-${item.weight}-${item.style || "normal"}`}
+            className="grid gap-4 px-6 py-6 md:grid-cols-[140px_1fr] md:items-center md:px-8"
+          >
+            <div className="font-mono text-[12px] text-slate-500">
+              {item.weight} / {item.style || "normal"}
+            </div>
 
-          <div className="mt-5 space-y-6">
-            {weights.map((item) => (
-              <div key={`${family}-${item.name}`} className="text-[16px] text-slate-950">
-                {item.name}              </div>
-            ))}
+            <div
+              className={`text-[32px] tracking-[-0.03em] text-slate-950 ${fontClass}`}
+              style={{
+                fontWeight: item.weight,
+                fontStyle: item.style || "normal",
+                lineHeight: 1.05,
+              }}
+            >
+              Signalix
+            </div>
           </div>
-        </div>
-
-        <div className="px-6 py-5 md:px-8">
-          <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400">
-            Typeface
-          </div>
-
-          <div className="mt-5 space-y-6">
-            {weights.map((item) => (
-              <div key={`${family}-${item.name}-sample`} className="pb-6 last:pb-0">
-                <div
-                  className={`text-[32px] tracking-[-0.03em] text-slate-950 ${fontClass}`}
-                  style={{
-                    fontWeight: item.weight,
-                    fontStyle: item.style || "normal",
-                    lineHeight: 1.05,
-                  }}
-                >
-                  Signalix
-                </div>
-
-                <div className="mt-3 font-mono text-[11px] text-slate-500">
-                  {item.weight} / {item.style || "normal"}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -1436,12 +1439,7 @@ const radiusScale = [
 
 
 
-  {
-    token: "sm",
-    value: 6,
-    label: "6px",
-    usage: "Compact inputs and pills",
-  },
+
 
   {
     token: "md",
@@ -1519,11 +1517,11 @@ export default function StyleGuidePage() {
       supports-[backdrop-filter]:bg-white/55
     "
         >
-          <div className="flex w-full items-center gap-6 px-5">
+          <div className="flex w-full items-center gap-6 px-14">
 
-            <div className="relative h-[78px] w-[200px] shrink-0">
+            <div className="relative h-[80px] w-[200px] shrink-0">
               <Image
-                src="/Signalixupdated-removebg-preview.png"
+                src="/Signalix-logo-AeonikPro (1).png"
                 alt="Signalix logo"
                 fill
                 className="object-contain"
@@ -1631,7 +1629,7 @@ export default function StyleGuidePage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1180px] px-6 lg:px-8 ">
+      <div className="mx-auto max-w-[1180px] px-6 lg:px-4 ">
 
         <section className="md:py-16">
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
@@ -1694,7 +1692,7 @@ export default function StyleGuidePage() {
 
                 <div className="rounded-[8px] border border-slate-200 bg-[#F0F6FC] p-4">
                   <div className="text-[11px] text-slate-500">Light canvas</div>
-                  <div className="mt-2 text-[18px] font-semibold tracking-[-0.02em] text-slate-950">#F0F6FC</div>
+                  <div className="mt-2 text-[18px] font-semibold tracking-[-0.02em] text-slate-950">#F9FAFB</div>
                   <div className="mt-4 flex gap-2">
                     <span className="h-3 w-3 rounded-full bg-[#4F46E5]" />
                     <span className="h-3 w-3 rounded-full bg-[#6366F1]" />
@@ -1900,7 +1898,7 @@ export default function StyleGuidePage() {
             description="Use very subtle elevation. Surfaces stay flat and border-led, with only light shadow used for floating layers."
           />
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {elevationScale.map((item) => (
               <div
                 key={item.token}
