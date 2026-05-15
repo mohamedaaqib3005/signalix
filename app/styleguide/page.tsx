@@ -28,7 +28,9 @@ type ButtonSpec = {
   | "neutralBadge"
   | "destructiveBadge"
   | "warningBadge"
-  | "amberBadge";
+  | "aiBadge"
+  | "blueBadge"
+  | "cyanBadge";
 };
 
 type PaletteSwatch = {
@@ -43,7 +45,6 @@ type PaletteGroup = {
   usage: string;
   swatches: PaletteSwatch[];
 };
-
 const colorPaletteGroups: PaletteGroup[] = [
   {
     variation: "indigo",
@@ -51,29 +52,37 @@ const colorPaletteGroups: PaletteGroup[] = [
     usage:
       "Primary brand colors, CTAs, active states, hover states, and soft glow overlays.",
     swatches: [
-      { shade: "100", name: "Soft Indigo", value: "#9EA8FF" },
-      { shade: "200", name: "Muted Indigo", value: "#818CF8" },
-      { shade: "300", name: "Royal Indigo", value: "#6366F1" },
-      { shade: "400", name: "Bright Indigo", value: "#5F57FF" },
-      { shade: "500", name: "Primary Indigo", value: "#4F46E5" },
-      { shade: "600", name: "Primary Hover", value: "#4032C8" },
-      { shade: "700", name: "Deep Indigo", value: "#4338CA" },
-      { shade: "800", name: "Indigo Soft Overlay", value: "#6366F14D" },
-      { shade: "900", name: "Muted Indigo Overlay", value: "#818CF880" },
-      { shade: "950", name: "Glow Indigo", value: "#6366F12E" },
-      { shade: "960", name: "Strong Glow Indigo", value: "#6366F161" },
+      { shade: "50", name: "Indigo Mist", value: "#EEF2FF" },
+      { shade: "100", name: "Pale Indigo", value: "#E0E7FF" },
+      { shade: "200", name: "Soft Indigo", value: "#C7D2FE" },
+      { shade: "300", name: "Muted Indigo", value: "#A5B4FC" },
+      { shade: "400", name: "Signal Indigo", value: "#9EA8FF" },
+      { shade: "500", name: "Core Indigo", value: "#818CF8" },
+      { shade: "600", name: "Royal Indigo", value: "#6366F1" },
+      { shade: "700", name: "Bright Indigo", value: "#5F57FF" },
+      { shade: "800", name: "Primary Indigo", value: "#4F46E5" },
+      { shade: "900", name: "Deep Indigo", value: "#211890" },
+      { shade: "950", name: "Indigo Abyss", value: "#110b5b" },
+
     ],
   },
   {
     variation: "lavender",
     token: "lavender-{n}",
     usage:
-      "Soft premium tints, subtle highlights, glassy backgrounds, and light ambient accents.",
+      "Premium lavender gradients, atmospheric glows, soft glassmorphism surfaces, dark-mode highlights, and elevated brand accents.",
     swatches: [
-      { shade: "100", name: "Glass Lavender", value: "#F3E8FF" },
+      { shade: "50", name: "Lavender Frost", value: "#FAF5FD" },
+      { shade: "100", name: " Lavender Mist", value: "#F5EAFC" },
       { shade: "200", name: "Soft Lavender", value: "#EBD3F8" },
-      { shade: "300", name: "Lavender Glow", value: "#D6BCFA" },
-      { shade: "400", name: "Muted Lavender", value: "#C4B5FD" },
+      { shade: "300", name: "Pastel Lavender", value: "#DCADF2" },
+      { shade: "400", name: "Muted Lavender", value: "#CD83EC" },
+      { shade: "500", name: "Signal Lavender", value: "#BF53E5" },
+      { shade: "600", name: "Deep Lavender", value: "#9D38BF" },
+      { shade: "700", name: "Royal Lavender", value: "#772991" },
+      { shade: "800", name: "Night Lavender", value: "#531A66" },
+      { shade: "900", name: "Lavender Ink", value: "#310C3D" },
+      { shade: "950", name: "Lavender Void", value: "#1F0528" },
     ],
   },
   {
@@ -82,118 +91,82 @@ const colorPaletteGroups: PaletteGroup[] = [
     usage:
       "Premium depth, layered gradients, dark mode surfaces, and stronger accent energy.",
     swatches: [
-      { shade: "500", name: "Vibrant Orchid", value: "#C084FC" },
-      { shade: "600", name: "Electric Violet", value: "#A855F7" },
-      { shade: "700", name: "Bright Violet", value: "#8B5CF6" },
-      { shade: "800", name: "Surface Plum", value: "#31265A" },
-      { shade: "900", name: "Hover Surface", value: "#221D40" },
-      { shade: "950", name: "Deep Violet", value: "#221A35" },
-      { shade: "975", name: "Atmospheric Purple", value: "#140B29" },
-      { shade: "980", name: "Orchid Glow", value: "#C084FC73" },
+      { shade: "50", name: "Violet Haze", value: "#f7f5ff" },
+      { shade: "100", name: "Pale Violet", value: "#efecfe" },
+      { shade: "200", name: "Soft Violet", value: "#e2dbfe" },
+      { shade: "300", name: "Muted Violet", value: "#d2c8fd" },
+      { shade: "400", name: "Orchid Orchid", value: "#c4b5fd" },
+      { shade: "500", name: "Electric Violet", value: "#a589fc" },
+      { shade: "600", name: "Bright Violet", value: "#8859fa" },
+      { shade: "700", name: "Royal Violet", value: "#7115f5" },
+      { shade: "800", name: "Deep Violet", value: "#4d0bab" },
+      { shade: "900", name: " Violet Ink", value: "#2b0467" },
+      { shade: "950", name: " Violet Eclipse", value: "#1a0244" },
+
     ],
   },
+
   {
     variation: "neutral",
     token: "neutral-{n}",
     usage:
       "Canvas, surfaces, borders, text, muted UI chrome, and restrained system backgrounds.",
     swatches: [
-      { shade: "100", name: "Frost White", value: "#FFFFFF" },
-      { shade: "200", name: "Surface White", value: "#FEFFFE" },
-      { shade: "300", name: "Background Light", value: "#F0F6FC" },
-      { shade: "400", name: "Canvas Light", value: "#F7F7F4" },
-      { shade: "500", name: "Soft Surface", value: "#F8F7FF" },
-      { shade: "600", name: "Soft Surface Alt", value: "#F8FBFF" },
-      { shade: "700", name: "Neutral Surface", value: "#F9FAFB" },
-      { shade: "800", name: "Border Neutral", value: "#E6E1DC" },
-      { shade: "900", name: "Border Neutral Alt", value: "#E5E7EB" },
-      { shade: "950", name: "Neutral Ghost", value: "#E7E9F0" },
-      { shade: "960", name: "Text Muted", value: "#9CA3AF" },
-      { shade: "970", name: "Text Secondary", value: "#7B716B" },
-      { shade: "980", name: "Text Primary", value: "#1F1B1A" },
-      { shade: "990", name: "Ink Primary", value: "#0F172A" },
-    ],
-  },
-  {
-    variation: "night",
-    token: "night-{n}",
-    usage:
-      "Dark canvas, elevated surfaces, hover layers, and glass borders for premium dark mode.",
-    swatches: [
-      { shade: "100", name: "Background Dark", value: "#0E091E" },
-      { shade: "200", name: "Surface Dark", value: "#15112B" },
-      { shade: "300", name: "Elevated Dark", value: "#1A1633" },
-      { shade: "400", name: "Elevated Surface", value: "#1E1A33" },
-      { shade: "500", name: "Hover Surface", value: "#221D40" },
+      { shade: "50", name: "Frost White", value: "#fcfcfd" },
+      { shade: "100", name: "Cloud Surface ", value: "#f9fafb" },
+      { shade: "200", name: "Soft Smoke", value: "#d3dbe2" },
+      { shade: "300", name: "Mist Gray", value: "#aebdcb" },
+      { shade: "400", name: "Muted Slate", value: "#8fa0af" },
+      { shade: "500", name: "Balanced Slate", value: "#778592" },
+      { shade: "600", name: "Steel Slate", value: "#5e6a74" },
+      { shade: "700", name: "Deep Slate", value: "#464f57" },
+      { shade: "800", name: "Graphite Surface", value: "#2f363b" },
+      { shade: "900", name: "Charcoal Ink", value: "#1a1e22" },
+      { shade: "950", name: "Obsidian", value: "#0e1114" },
+
     ],
   },
   {
     variation: "cyan",
     token: "cyan-{n}",
     usage:
-      "Cool data accents, luminous highlight states, and bright analytical highlights.",
+      "Analytics highlights, AI insights, charts, and luminous data visualization.",
     swatches: [
-      { shade: "100", name: "Cyan Tint", value: "#ECFEFF" },
-      { shade: "200", name: "Soft Cyan", value: "#CFFAFE" },
-      { shade: "300", name: "Sky Cyan", value: "#A5F3FC" },
-      { shade: "400", name: "Fresh Cyan", value: "#67E8F9" },
-      { shade: "500", name: "Bright Cyan", value: "#22D3EE" },
-      { shade: "600", name: "Analytics Cyan", value: "#06B6D4" },
-      { shade: "700", name: "Deep Cyan", value: "#0891B2" },
-      { shade: "800", name: "Dark Cyan", value: "#0E7490" },
-      { shade: "900", name: "Ink Cyan", value: "#155E75" },
+      { shade: "50", name: "Cyan Tint", value: "#e8faff" },
+      { shade: "100", name: "Soft Cyan", value: "#cff4ff" },
+      { shade: "200", name: "Sky Cyan", value: "#9eecfe" },
+      { shade: "300", name: "Fresh Cyan", value: "#37e2fe" },
+      { shade: "400", name: "Bright Cyan", value: "#22D3EE" },
+      { shade: "500", name: "Analytics Cyan", value: "#1aadc3" },
+      { shade: "600", name: "Deep Cyan", value: "#12889a" },
+      { shade: "700", name: "Dark Cyan", value: "#0b6573" },
+      { shade: "800", name: "Ink Cyan", value: "#05444e" },
+      { shade: "900", name: "Cyan Deep", value: "#02262c" },
+      { shade: "950", name: "Cyan Abyss", value: "#01161b" },
+
     ],
   },
-  {
-    variation: "teal",
-    token: "teal-{n}",
-    usage:
-      "Enterprise depth, steady action colors, and cool teal-based highlights.",
-    swatches: [
-      { shade: "100", name: "Teal Tint", value: "#E6FFFB" },
-      { shade: "200", name: "Soft Teal", value: "#C5F4EF" },
-      { shade: "300", name: "Muted Teal", value: "#9EE7DE" },
-      { shade: "400", name: "Balanced Teal", value: "#6ED3CB" },
-      { shade: "500", name: "Brand Teal", value: "#367588" },
-      { shade: "600", name: "Deep Teal", value: "#2E6472" },
-      { shade: "700", name: "Dark Teal", value: "#26515D" },
-      { shade: "800", name: "Night Teal", value: "#1E4049" },
-      { shade: "900", name: "Ink Teal", value: "#17323A" },
-    ],
-  },
-  {
-    variation: "amber",
-    token: "amber-{n}",
-    usage:
-      "Warm energetic accents, highlights, attention-grabbing actions, and vibrant UI emphasis.",
-    swatches: [
-      { shade: "100", name: "Amber Tint", value: "#FFF7ED" },
-      { shade: "200", name: "Soft Amber", value: "#FFEDD5" },
-      { shade: "300", name: "Light Amber", value: "#FED7AA" },
-      { shade: "400", name: "Warm Amber", value: "#FDBA74" },
-      { shade: "500", name: "Signal Amber", value: "#FF9500" },
-      { shade: "600", name: "Deep Amber", value: "#EA8500" },
-      { shade: "700", name: "Dark Amber", value: "#C96F00" },
-      { shade: "800", name: "Burnt Amber", value: "#9F5600" },
-      { shade: "900", name: "Ink Amber", value: "#7A4200" },
-    ],
-  },
+
 
   {
     variation: "blue",
     token: "blue-{n}",
     usage:
-      "Trust signals, informational UI, system highlights, and cool interface accents.",
+      "Enterprise dashboards, informational UI, trusted workflows, and structured data interfaces.",
+
     swatches: [
-      { shade: "100", name: "Blue Tint", value: "#EFF6FF" },
-      { shade: "200", name: "Soft Blue", value: "#DBEAFE" },
-      { shade: "300", name: "Light Blue", value: "#BFDBFE" },
-      { shade: "400", name: "Sky Blue", value: "#93C5FD" },
-      { shade: "500", name: "Signal Blue", value: "#3B82F6" },
-      { shade: "600", name: "Deep Blue", value: "#2563EB" },
-      { shade: "700", name: "Dark Blue", value: "#1D4ED8" },
-      { shade: "800", name: "Night Blue", value: "#1E40AF" },
-      { shade: "900", name: "Ink Blue", value: "#1E3A8A" },
+      { shade: "50", name: "Blue Tint", value: "#EFF6FF" },
+      { shade: "100", name: "Soft Blue", value: "#DBEAFE" },
+      { shade: "200", name: "Light Blue", value: "#BFDBFE" },
+      { shade: "300", name: "Sky Blue", value: "#93C5FD" },
+      { shade: "400", name: "Signal Blue", value: "#3B82F6" },
+      { shade: "500", name: "Deep Blue", value: "#2563EB" },
+      { shade: "600", name: "Royal Blue", value: "#1D4ED8" },
+      { shade: "700", name: "Dark Blue", value: "#1E40AF" },
+      { shade: "800", name: "Night Blue", value: "#1E3A8A" },
+      { shade: "900", name: "Blue Ink", value: "#172554" },
+      { shade: "950", name: "Blue Abyss", value: "#02102a" },
+
     ],
   },
   {
@@ -202,15 +175,18 @@ const colorPaletteGroups: PaletteGroup[] = [
     usage:
       "Positive states, confirmations, completion feedback, and success banners.",
     swatches: [
-      { shade: "100", name: "Success Tint", value: "#ECFDF5" },
-      { shade: "200", name: "Soft Success", value: "#D1FAE5" },
-      { shade: "300", name: "Mint Success", value: "#A7F3D0" },
-      { shade: "400", name: "Fresh Success", value: "#6EE7B7" },
-      { shade: "500", name: "Success Green", value: "#34D399" },
-      { shade: "600", name: "Brand Success", value: "#10B981" },
-      { shade: "700", name: "Deep Success", value: "#059669" },
-      { shade: "800", name: "Dark Success", value: "#047857" },
-      { shade: "900", name: "Ink Success", value: "#065F46" },
+      { shade: "50", name: "Success Tint", value: "#dcfeed" },
+      { shade: "100", name: "Soft Success", value: "#b2fed9" },
+      { shade: "200", name: "Mint Success", value: "#3ff9b5" },
+      { shade: "300", name: "Fresh Success", value: "#3ae6a7" },
+      { shade: "400", name: "Success Green", value: "#34D399" },
+      { shade: "500", name: "Brand Success", value: "#29ac7c" },
+      { shade: "600", name: "Deep Success", value: "#1e8a63" },
+      { shade: "700", name: "Dark Success", value: "#146648" },
+      { shade: "800", name: "Ink Success", value: "#0a442f" },
+      { shade: "900", name: "Success Deep", value: "#04271a" },
+      { shade: "950", name: "Emerald Abyss", value: "#02170e" },
+
     ],
   },
   {
@@ -219,15 +195,18 @@ const colorPaletteGroups: PaletteGroup[] = [
     usage:
       "Attention states, caution messages, and warning accents.",
     swatches: [
-      { shade: "100", name: "Warning Tint", value: "#FFF7ED" },
-      { shade: "200", name: "Soft Warning", value: "#FFEDD5" },
-      { shade: "300", name: "Warm Warning", value: "#FED7AA" },
-      { shade: "400", name: "Bright Warning", value: "#FDBA74" },
-      { shade: "500", name: "Warning Orange", value: "#FB923C" },
-      { shade: "600", name: "Brand Warning", value: "#F97316" },
-      { shade: "700", name: "Deep Warning", value: "#EA580C" },
-      { shade: "800", name: "Dark Warning", value: "#C2410C" },
-      { shade: "900", name: "Ink Warning", value: "#9A3412" },
+      { shade: "50", name: "Amber Tint", value: "#fef1ec" },
+      { shade: "100", name: "Soft Amber", value: "#fee6dd" },
+      { shade: "200", name: "Light Amber", value: "#fcc9b2" },
+      { shade: "300", name: "Warm Amber", value: "#fcb086" },
+      { shade: "400", name: "Signal Amber", value: "#fb923c" },
+      { shade: "500", name: "Brand Amber", value: "#d37722" },
+      { shade: "600", name: "Deep Amber", value: "#a75d19" },
+      { shade: "700", name: "Dark Amber", value: "#7d4410" },
+      { shade: "800", name: "Burnt Amber", value: "#552d07" },
+      { shade: "900", name: "Ink Amber", value: "#341903" },
+      { shade: "950", name: "Ember Void", value: "#341903" },
+
     ],
   },
   {
@@ -236,15 +215,18 @@ const colorPaletteGroups: PaletteGroup[] = [
     usage:
       "Destructive states, invalid inputs, errors, and rejection feedback.",
     swatches: [
-      { shade: "100", name: "Reject Tint", value: "#FEF2F2" },
-      { shade: "200", name: "Soft Reject", value: "#FEE2E2" },
-      { shade: "300", name: "Light Reject", value: "#FECACA" },
-      { shade: "400", name: "Bright Reject", value: "#FCA5A5" },
-      { shade: "500", name: "Reject Red", value: "#F87171" },
-      { shade: "600", name: "Brand Reject", value: "#EF4444" },
-      { shade: "700", name: "Deep Reject", value: "#DC2626" },
-      { shade: "800", name: "Dark Reject", value: "#B91C1C" },
-      { shade: "900", name: "Ink Reject", value: "#991B1B" },
+      { shade: "50", name: "Reject Tint", value: "#fef1f1" },
+      { shade: "100", name: "Soft Reject", value: "#fddede" },
+      { shade: "200", name: "Light Reject", value: "#fbbdbd" },
+      { shade: "300", name: "Bright Reject", value: "#f99999" },
+      { shade: "400", name: "Reject Red", value: "#f87171" },
+      { shade: "500", name: "Brand Reject", value: "#f62525" },
+      { shade: "600", name: "Deep Reject", value: "#c81c1c" },
+      { shade: "700", name: "Dark Reject", value: "#971212" },
+      { shade: "800", name: "Ink Reject", value: "#690909" },
+      { shade: "900", name: "Reject Deep", value: "#420404" },
+      { shade: "950", name: "Crimson Abyss", value: "#2b0202" },
+
     ],
   },
 ];
@@ -638,17 +620,33 @@ function ButtonPreview({
       </button>
     );
   }
-
   if (kind === "successBadge") {
     return (
       <span
-        className={`${base} rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[11px] text-emerald-700`}
+        className={`
+        ${base}
+
+        rounded-full
+        border
+        border-emerald-200
+
+        bg-emerald-50
+
+        px-3
+        py-1
+
+        text-[11px]
+        font-medium
+        tracking-[-0.01em]
+
+        text-emerald-700
+      `}
       >
         {label}
       </span>
     );
-
   }
+
   if (kind === "warningBadge") {
     return (
       <span
@@ -661,10 +659,10 @@ function ButtonPreview({
 
         bg-white
 
-        px-4
-        py-2
+        px-3
+        py-1
 
-        text-[13px]
+        text-[11px]
         font-medium
         tracking-[-0.01em]
 
@@ -678,31 +676,110 @@ function ButtonPreview({
     );
   }
 
-  if (kind === "amberBadge") {
+  // BLUE BADGE
+  if (kind === "blueBadge") {
     return (
       <span
         className={`
         ${base}
+        group
+        relative
+        isolate
+        overflow-hidden
 
         rounded-full
+
         border
-        border-[#FFB84D]
+        border-[#2563ED]/35
 
-        bg-[linear-gradient(135deg,#FFB74D_0%,#FF9500_100%)]
+        bg-[linear-gradient(135deg,#EFF6FF_0%,#DBEAFE_42%,#BFDBFE_100%)]
 
-        px-4
-        py-2
+        px-3
+        py-1
 
-        text-[13px]
+        text-[11px]
         font-medium
         tracking-[-0.01em]
 
-        text-white
+        text-[#2563ED]
 
-        shadow-[0_8px_24px_rgba(255,149,0,0.24)]
+        shadow-[0_8px_24px_rgba(37,99,235,0.22)]
+
+        transition-all
+        duration-300
+
+        hover:shadow-[0_10px_30px_rgba(37,99,235,0.30)]
       `}
       >
-        {label}
+        <span className="relative z-20">{label}</span>
+
+        <span
+          className="
+          pointer-events-none
+          absolute
+          inset-0
+          z-10
+          rounded-full
+
+          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0)_65%)]
+
+          opacity-80
+        "
+        />
+      </span>
+    );
+  }
+
+  // CYAN BADGE
+  if (kind === "cyanBadge") {
+    return (
+      <span
+        className={`
+        ${base}
+        group
+        relative
+        isolate
+        overflow-hidden
+
+        rounded-full
+
+        border
+        border-[#22D3EE]/35
+
+        bg-[linear-gradient(135deg,#67E8F9_0%,#37E2FE_38%,#22D3EE_100%)]
+
+        px-3
+        py-1
+
+        text-[11px]
+        font-medium
+        tracking-[-0.01em]
+
+        text-[#042F3A]
+
+        shadow-[0_8px_24px_rgba(34,211,238,0.20)]
+
+        transition-all
+        duration-300
+
+        hover:shadow-[0_10px_30px_rgba(34,211,238,0.28)]
+      `}
+      >
+        <span className="relative z-20">{label}</span>
+
+        <span
+          className="
+          pointer-events-none
+          absolute
+          inset-0
+          z-10
+          rounded-full
+
+          bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.26)_0%,rgba(255,255,255,0)_65%)]
+
+          opacity-80
+        "
+        />
       </span>
     );
   }
@@ -710,9 +787,69 @@ function ButtonPreview({
   if (kind === "neutralBadge") {
     return (
       <span
-        className={`${base} rounded-full border border-slate-200 bg-[#F9FAFB] px-3 py-1 text-[11px] text-slate-700`}
+        className={`
+        ${base}
+
+        rounded-full
+        border
+        border-slate-200
+
+        bg-[#F9FAFB]
+
+        px-3
+        py-1
+
+        text-[11px]
+        font-medium
+        tracking-[-0.01em]
+
+        text-slate-700
+      `}
       >
         {label}
+      </span>
+    );
+  }
+
+  if (kind === "aiBadge") {
+    return (
+      <span
+        className={`
+        ${base}
+
+        relative
+        overflow-hidden
+
+        rounded-full
+
+        border
+        border-[#D6BCFA]/60
+
+        bg-[linear-gradient(135deg,#C7D2FE_0%,#EFE7FF_45%,#818CF8_100%)]
+
+        px-3
+        py-1
+
+        text-[11px]
+        font-medium
+        tracking-[-0.01em]
+
+        text-[#636F1]
+
+        shadow-[0_8px_20px_rgba(99,102,241,0.10)]
+      `}
+      >
+        <span
+          className="
+          absolute inset-0
+          bg-[radial-gradient(circle_at_top_left,rgba(214,188,250,0.45),transparent_45%)]
+          opacity-70
+        "
+        />
+
+        <span className="relative z-10">
+          {label}
+        </span>
       </span>
     );
   }
@@ -841,10 +978,22 @@ const pills: ButtonSpec[] = [
     kind: "warningBadge",
   },
   {
-    token: "Amber Pill",
+    token: "AI Pill",
     label: "AI agent",
-    description: "Warm amber highlighted state.",
-    kind: "amberBadge",
+    description: "AI-powered assistant state.",
+    kind: "aiBadge",
+  },
+  {
+    token: "Blue Pill",
+    label: "Analytics",
+    description: "Deep blue highlighted state for insights and dashboards.",
+    kind: "blueBadge",
+  },
+  {
+    token: "Cyan Pill",
+    label: "Live Data",
+    description: "Bright cyan state for realtime and active systems.",
+    kind: "cyanBadge",
   },
   {
     token: "Destructive Pill",
@@ -1023,49 +1172,46 @@ const familyMap: Record<string, string> = {
   "data-md": "Geist Mono, monospace",
 };
 
-
 const fontWeightGroups = [
   {
     family: "Aeonik Pro",
     fontClass: "font-cabinet",
     weights: [
-      { name: "Bold", weight: 700, style: "normal" },
       { name: "Regular", weight: 400, style: "normal" },
+      { name: "Bold", weight: 700, style: "normal" },
     ],
   },
-
   {
     family: "Satoshi",
     fontClass: "font-satoshi",
     weights: [
-      { name: "Black", weight: 900, style: "normal" },
-      { name: "Black Italic", weight: 900, style: "italic" },
-      { name: "Bold", weight: 700, style: "normal" },
-      { name: "Bold Italic", weight: 700, style: "italic" },
-      { name: "Italic", weight: 400, style: "italic" },
       { name: "Light", weight: 300, style: "normal" },
-      { name: "Light Italic", weight: 300, style: "italic" },
-      { name: "Medium", weight: 500, style: "normal" },
-      { name: "Medium Italic", weight: 500, style: "italic" },
       { name: "Regular", weight: 400, style: "normal" },
       { name: "Variable", weight: 450, style: "normal" },
-      { name: "Variable Italic", weight: 450, style: "italic" },
+      { name: "Medium", weight: 500, style: "normal" },
+      { name: "Semi Bold", weight: 600, style: "normal" },
+      { name: "Bold", weight: 700, style: "normal" },
+      { name: "Black", weight: 900, style: "normal" },
+      { name: "Light Italic", weight: 300, style: "italic" },
+      { name: "Italic", weight: 400, style: "italic" },
+      { name: "Medium Italic", weight: 500, style: "italic" },
+      { name: "Bold Italic", weight: 700, style: "italic" },
+      { name: "Black Italic", weight: 900, style: "italic" },
     ],
   },
-
   {
     family: "Geist Mono",
     fontClass: "font-mono",
     weights: [
-      { name: "Black", weight: 900 },
-      { name: "Bold", weight: 700 },
-      { name: "Extra Bold", weight: 800 },
+      { name: "Thin", weight: 100 },
       { name: "Extra Light", weight: 200 },
       { name: "Light", weight: 300 },
-      { name: "Medium", weight: 500 },
       { name: "Regular", weight: 400 },
+      { name: "Medium", weight: 500 },
       { name: "Semi Bold", weight: 600 },
-      { name: "Thin", weight: 100 },
+      { name: "Bold", weight: 700 },
+      { name: "Extra Bold", weight: 800 },
+      { name: "Black", weight: 900 },
     ],
   },
 ];
@@ -1084,45 +1230,81 @@ function FontWeightRow({
   }[];
 }) {
   return (
-    <div className="border-b border-slate-200 px-5 py-8 last:border-b-0">
-      <div className="mb-6">
-        <div className="text-[18px] font-semibold tracking-[-0.02em] text-slate-950">
-          {family}
+    <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white">
+      <div className="flex items-center justify-between border-b border-slate-200 px-6 py-5 md:px-8">
+        <div>
+          <div className="text-[18px] font-semibold tracking-[-0.02em] text-slate-950">
+            {family}
+          </div>
+          <p className="mt-1 text-[12px] text-slate-500">
+            Ordered from lighter to heavier weights.
+          </p>
+        </div>
+
+        <div className="font-mono text-[11px] uppercase tracking-[0.12em] text-slate-400">
+          Variant / Typeface
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {weights.map((item) => (
-          <div
-            key={`${family}-${item.name}`}
-            className="rounded-[10px] border border-slate-200 bg-[#F9FAFB] p-4"
-          >
-            <div className="text-[12px] font-medium uppercase tracking-[0.08em] text-slate-500">
-              {item.name}
-            </div>
-
-            <div
-              className={`mt-4 text-[32px] tracking-[-0.03em] text-slate-950 ${fontClass}`}
-              style={{
-                fontWeight: item.weight,
-                fontStyle: item.style || "normal",
-                lineHeight: 1,
-              }}
-            >
-              Signalix
-            </div>
-
-            <div className="mt-4 font-mono text-[11px] text-slate-500">
-              {item.weight} / {item.style || "normal"}
-            </div>
+      <div className="grid md:grid-cols-[220px_1fr]">
+        <div className="border-b border-slate-200 bg-[#F9FAFB] px-6 py-5 md:border-b-0 md:border-r md:px-8">
+          <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400">
+            Variant
           </div>
-        ))}
+
+          <div className="mt-5 space-y-6">
+            {weights.map((item) => (
+              <div key={`${family}-${item.name}`} className="text-[16px] text-slate-950">
+                {item.name}              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="px-6 py-5 md:px-8">
+          <div className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400">
+            Typeface
+          </div>
+
+          <div className="mt-5 space-y-6">
+            {weights.map((item) => (
+              <div key={`${family}-${item.name}-sample`} className="pb-6 last:pb-0">
+                <div
+                  className={`text-[32px] tracking-[-0.03em] text-slate-950 ${fontClass}`}
+                  style={{
+                    fontWeight: item.weight,
+                    fontStyle: item.style || "normal",
+                    lineHeight: 1.05,
+                  }}
+                >
+                  Signalix
+                </div>
+
+                <div className="mt-3 font-mono text-[11px] text-slate-500">
+                  {item.weight} / {item.style || "normal"}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
 const spacingScale = [
+  {
+    token: "xxxs",
+    className: "gap-xxxs",
+    value: 1,
+    label: "0.0625rem (1px)",
+    usage: "Borders and tiny gaps",
+  },
+  {
+    token: "xxs",
+    className: "gap-xxs",
+    value: 2,
+    label: "0.125rem (2px)",
+    usage: "Borders and tiny gaps",
+  },
   {
     token: "xs",
     className: "gap-xs",
@@ -1252,12 +1434,7 @@ const radiusScale = [
     usage: "Sharp surfaces",
   },
 
-  {
-    token: "xs",
-    value: 4,
-    label: "4px",
-    usage: "Tiny inputs and micro elements",
-  },
+
 
   {
     token: "sm",
@@ -1271,13 +1448,6 @@ const radiusScale = [
     value: 8,
     label: "8px",
     usage: "Standard cards and controls",
-  },
-
-  {
-    token: "lg",
-    value: 10,
-    label: "10px",
-    usage: "Primary containers",
   },
 
   {
@@ -1556,39 +1726,40 @@ export default function StyleGuidePage() {
           </div>
         </section>
         <section className="py-16 md:py-20">
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div>
-              <SectionTitle
-                eyebrow="Surface system"
-                title="Airy light and atmospheric dark foundations"
-                description="Use flat surfaces, fine borders, and generous spacing. Keep shadows minimal so the hierarchy comes from whitespace and contrast."
-              />
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <SurfaceCard name="App Background" value="#F0F6FC" usage="Main light canvas" />
-                <SurfaceCard name="Card Surface" value="#FEFFFE" usage="Cards, panels, modals" />
-                <SurfaceCard name="Soft Surface" value="#F8FBFF" usage="Tables and subtle containers" />
-                <SurfaceCard name="Border" value="#E6E1DC" usage="Hairline separators" />
-              </div>
-            </div>
+          <div>
+            <SectionTitle
+              eyebrow="Surface system"
+              title="Airy light and atmospheric dark foundations"
+              description="Use flat surfaces, fine borders, and generous spacing. Keep shadows minimal so the hierarchy comes from whitespace and contrast."
+            />
 
-            <div className="rounded-[10px] border border-slate-200 bg-[#0E091E] p-5 md:p-6">
-              <p className="text-[12px] font-medium text-white/65">Dark foundation</p>
-              <h3
-                className="font-satoshi mt-2 text-[32px] font-bold tracking-[-0.03em] text-white"
-                style={{ lineHeight: 1.05 }}
-              >
-                Dark mode surfaces with a cool, premium tone.
-              </h3>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <SurfaceCard dark name="App Background" value="#0E091E" usage="Main dark canvas" />
-                <SurfaceCard dark name="Card Surface" value="#15112B" usage="Panels and cards" />
-                <SurfaceCard dark name="Elevated Surface" value="#1E1A33" usage="Menus and popovers" />
-                <SurfaceCard dark name="Hover Surface" value="#221D40" usage="Hover and active overlays" />
-              </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <SurfaceCard
+                name="App Background"
+                value="#fcfcfd"
+                usage="Main application canvas"
+              />
+
+              <SurfaceCard
+                name="Card Surface"
+                value="#f9fafb"
+                usage="Cards, panels, modals"
+              />
+
+              <SurfaceCard
+                name="Soft Surface"
+                value="#d3dbe2"
+                usage="Tables and subtle containers"
+              />
+
+              <SurfaceCard
+                name="Border"
+                value="#aebdcb"
+                usage="Hairline separators and dividers"
+              />
             </div>
           </div>
         </section>
-
         <section id="type" className="py-16 md:py-20">
           <SectionTitle
             eyebrow="Typography scale"
@@ -1617,13 +1788,13 @@ export default function StyleGuidePage() {
             description="Complete font-family and weight system used across Signalix."
           />
 
-          <div className="mt-8 overflow-hidden rounded-[10px] border border-slate-200 bg-white">
+          <div className="mt-8 space-y-6">
             {fontWeightGroups.map((group) => (
               <FontWeightRow
                 key={group.family}
                 family={group.family}
                 fontClass={group.fontClass}
-                weights={group.weights}
+                weights={[...group.weights].sort((a, b) => a.weight - b.weight)}
               />
             ))}
           </div>
@@ -1636,16 +1807,16 @@ export default function StyleGuidePage() {
           />
 
           <div className="mt-8 overflow-hidden rounded-[20px] border border-slate-200 bg-white">
-            <div className="grid grid-cols-[160px_1fr_1fr] border-b border-slate-200 px-6 py-4 text-[14px] font-semibold text-slate-950">
-              <div>Classes</div>
+            <div className="grid grid-cols-[180px_1fr_1fr] border-b border-slate-200 px-6 py-4 text-[14px] font-semibold text-slate-950">
+              <div>Token</div>
               <div>Usage</div>
-              <div>Sample</div>
+              <div>Scale</div>
             </div>
 
             {spacingScale.map((item) => (
               <div
                 key={item.token}
-                className="grid grid-cols-[160px_1fr_1fr] items-center border-b border-slate-200 px-6 py-5 last:border-b-0"
+                className="grid grid-cols-[180px_1fr_1fr] items-center border-b border-slate-200 px-6 py-5 last:border-b-0"
               >
                 <div>
                   <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 font-mono text-[12px] text-slate-900">
@@ -1657,22 +1828,10 @@ export default function StyleGuidePage() {
 
                 <div className="flex items-center">
                   <div
-                    className="h-8 rounded-none bg-[#5F57FF]"
-                    style={{ width: `${Math.max(4, item.value * 2)}px` }}
+                    className="h-2 rounded-full bg-[#5F57FF]"
+                    style={{ width: `${Math.max(12, item.value * 2)}px` }}
                   />
                 </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {spacingScale.map((item) => (
-              <div key={item.token} className="rounded-[12px] border border-slate-200 bg-[#F9FAFB] p-4">
-                <div className="text-[13px] font-medium tracking-[-0.02em] text-slate-950">
-                  {item.className}
-                </div>
-                <div className="mt-1 text-[12px] text-slate-500">{item.label}</div>
-                <p className="mt-2 text-[12px] leading-5 text-slate-500">{item.usage}</p>
               </div>
             ))}
           </div>
