@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // const cabinetGrotesk = localFont({
 //   src: [
@@ -249,13 +254,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`
-        ${aeonik.variable}
-        ${satoshi.variable}
-        ${geistMono.variable}
-        h-full
-        antialiased
-      `}
+      className={cn("h-full", "antialiased", aeonik.variable, satoshi.variable, geistMono.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-full bg-white font-satoshi text-slate-950">
         {children}
