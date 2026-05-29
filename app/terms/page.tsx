@@ -624,7 +624,7 @@ function MetricBarChart({
   const gradients = {
     techModern:
       "linear-gradient(135deg, #EBD3F8 0%, #C4B5FD 24%, #9EA8FF 48%, #4F46E5 74%, #31265A 92%, #221A35 100%)", deepOcean:
-      "linear-gradient(135deg, #221A35 0%, #4338CA 38%, #6366F1 68%, #A855F7 100%)",
+      "linear-gradient(135deg, #C7D2FE 0%,   #F5EAFC 45%,#A589FC 100 %) ",
     electricSky: "linear-gradient(135deg, #06B6D4 0%, #4F46E5 100%)"
   };
 

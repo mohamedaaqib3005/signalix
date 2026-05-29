@@ -691,7 +691,7 @@ function ButtonPreview({
         border
         border-[#2563ED]
 
-        bg-[linear-gradient(135deg,#EFF6FF_0%,#DBEAFE_42%,#BFDBFE_100%)]
+        bg-[linear-gradient(135deg,#CFF4FF_0%,#DBEAFE_42%,#C7D2FE_100%)]
 
         px-3
         py-1
@@ -824,7 +824,7 @@ function ButtonPreview({
         border
         border-[#D6BCFA]/60
 
-        bg-[linear-gradient(135deg,#C7D2FE_0%,#EFE7FF_45%,#818CF8_100%)]
+        bg-[linear-gradient(135deg,#efecfe_0%,#c7d2fe_35%,#a589fc_100%)]
 
         px-3
         py-1
